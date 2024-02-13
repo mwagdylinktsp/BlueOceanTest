@@ -13,5 +13,11 @@ pipeline {
       }
     }
 
+    stage('notify me') {
+      steps {
+        echo 'testttttttttt'
+      }
+    }
+
   }
 }
