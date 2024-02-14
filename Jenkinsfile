@@ -11,7 +11,8 @@ pipeline {
     stage('build') {
       steps {
         build 'Virto-test'
-        echo 'test stage done'
+        echo 'Build Completed'
+        sh 'cd C:\inetpub\wwwroot\TestSite\src\VirtoCommerce.Platform.Web\App_Data'
       }
     }
 
