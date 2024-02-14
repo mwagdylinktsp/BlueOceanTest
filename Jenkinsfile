@@ -1,13 +1,14 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
+    stage('SCM') {
       steps {
         echo 'buildtest done'
+        git(url: 'git@github.com:360CXservices/CICDTest.git', branch: 'DevelopersBranch', credentialsId: 'it')
       }
     }
 
-    stage('TestStage') {
+    stage('build') {
       steps {
         echo 'test stage done'
       }
