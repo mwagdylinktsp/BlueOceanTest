@@ -21,13 +21,5 @@ pipeline {
         echo 'Test Done'
       }
     }
-
-    stage('IIS disable and dll location') {
-      steps {
-        sh 'iisreset /stop'
-        echo 'IIS Disabled , Folder Located'
-      }
-    }
-
   }
 }
