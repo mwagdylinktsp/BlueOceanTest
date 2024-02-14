@@ -3,20 +3,28 @@ pipeline {
   stages {
     stage('SCM') {
       steps {
+        git(branch: 'DevelopersBranch', credentialsId: 'Word-ssh', url: 'git@github.com:360CXservices/CICDTest.git')
         echo 'buildtest done'
-        git branch: 'DevelopersBranch', credentialsId: 'Word-ssh', url: 'git@github.com:360CXservices/CICDTest.git'
       }
     }
 
     stage('build') {
       steps {
+        build 'Virto-test'
         echo 'test stage done'
       }
     }
 
-    stage('notify me') {
+    stage('Test') {
       steps {
-        echo 'testttttttttt'
+        echo 'Test Done'
+      }
+    }
+
+    stage('IIS disable and dll location') {
+      steps {
+        sh 'iisreset /stop'
+        echo 'IIS Disabled , Folder Located'
       }
     }
 
