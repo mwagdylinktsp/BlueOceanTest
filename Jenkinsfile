@@ -12,7 +12,9 @@ pipeline {
       steps {
         build 'Virto-test'
         echo 'Build Completed'
-        sh 'cd C:\inetpub\wwwroot\TestSite\src\VirtoCommerce.Platform.Web\App_Data'
+        dir('C:\\inetpub\\wwwroot\\TestSite\\src\\VirtoCommerce.Platform.Web\\App_Data') {
+    // some block
+}
       }
     }
 
