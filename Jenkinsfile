@@ -1,4 +1,4 @@
-pipeline {
+opipeline {
   agent any
   stages {
     stage('SCM') {
@@ -18,9 +18,10 @@ pipeline {
       }
     }
 
-    stage('Test') {
+    stage('Deploy') {
       steps {
-        echo 'Test Done'
+        bat "\"${tool 'MSBuild'}\" AspDotNetJenkins.sln /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:SkipInvalidConfigurations=true /t:build /p:Configuration=Release /p:Platform=\"Any CPU\" /p:DeleteExistingFiles=True /p:publishUrl=C:\inetpub\wwwroot\TestSite"
+        echo 'Deployment Completed'
       }
     }
   }
