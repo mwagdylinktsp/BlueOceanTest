@@ -1,9 +1,7 @@
 pipeline {
   agent any
   environment {
-     env.PATH = env.PATH + ";c:\\Windows\\System32"
- }
-  environment {
+    env.PATH = env.PATH + ";c:\\Windows\\System32"
     dotnet = 'C:\\Program Files\\dotnet\\dotnet.exe'
  }
   stages {
