@@ -9,9 +9,10 @@ pipeline {
 
     stage('Build Stage') {
       steps {
-        bat '''cd\\
-        cd windows\\system32
-        \'C:\\WagdyData\\jenkins_home\\workspace\\BlueOcean_main\\VirtoCommerce.Platform.sln --configuration Release\''''
+        bat '''start cmd.exe
+            cd\\
+            cd windows\\system32
+            C:\\WagdyData\\jenkins_home\\workspace\\BlueOcean_main\\VirtoCommerce.Platform.sln --configuration Release'''
       }
     }
 
