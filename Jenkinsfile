@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  environment {
-    dotnet = 'C:\\Program Files\\dotnet\\dotnet.exe'
-  }
   stages {
     stage('Checkout Stage') {
       steps {
@@ -12,10 +9,7 @@ pipeline {
 
     stage('Build Stage') {
       steps {
-        bat '''start cmd.exe
-            cd\\
-            cd windows\\system32
-            C:\\WagdyData\\jenkins_home\\workspace\\BlueOcean_main\\VirtoCommerce.Platform.sln --configuration Release'''
+        bat 'C:\\WagdyData\\jenkins_home\\workspace\\BlueOcean_main\\VirtoCommerce.Platform.sln --configuration Release'
       }
     }
 
@@ -34,5 +28,8 @@ pipeline {
       }
     }
 
+  }
+  environment {
+    dotnet = 'C:\\Program Files\\dotnet\\dotnet.exe'
   }
 }
