@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  environment {
-    dotnet = 'C:\\Program Files\\dotnet\\dotnet.exe'
-     }
   stages {
     stage('Checkout Stage') {
       steps {
@@ -12,7 +9,7 @@ pipeline {
 
     stage('Build Stage') {
       steps {
-        bat 'D:\\wagdyTest\\VirtoCommerce.Platform.sln --configuration Release'
+        bat 'D:\\GitHub_Projects\\Virto-Test\\VirtoCommerce.Platform.sln --configuration Release'
       }
     }
 
@@ -31,5 +28,8 @@ pipeline {
       }
     }
 
+  }
+  environment {
+    dotnet = 'C:\\Program Files\\dotnet\\dotnet.exe'
   }
 }
