@@ -9,7 +9,7 @@ pipeline {
 
     stage('Build Stage') {
       steps {
-        bat 'D:\\GitHub_Projects\\Virto-Test\\VirtoCommerce.Platform.sln --configuration Release'
+        bat 'C:\\WagdyData\\jenkins_home\\workspace\\BlueOceanTest_main\\VirtoCommerce.Platform.sln --configuration Release'
       }
     }
 
