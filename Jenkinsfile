@@ -9,16 +9,6 @@ pipeline {
         git(url: 'git@github.com:mwagdylinktsp/VirtoTest.git', branch: 'main', credentialsId: 'Word-ssh')
       }
     }
-
-    stage('Build Stage') {
-      steps {
-        bat '''start cmd.exe
-            cd\\
-            cd windows\\system32
-            C:\\WagdyData\\jenkins_home\\workspace\\BlueOcean_main\\VirtoCommerce.Platform.sln --configuration Release'''
-      }
-    }
-
     stage('Release Stage') {
       steps {
         bat 'dotnet build %WORKSPACE%\\VirtoCommerce.Platform.sln /p:PublishProfile=" %WORKSPACE%\\TestNEW\\Properties\\PublishProfiles\\FolderProfile.pubxml" /p:Platform="Any CPU" /p:DeployOnBuild=true /m'
