@@ -17,8 +17,7 @@ pipeline {
 
     stage('Deploy Stage') {
       steps {
-        bat '''start cmd.exe
-            iisreset /stop
+        bat '''iisreset /stop
             "C:\\Program Files (x86)\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe" -verb:sync -source:package="%WORKSPACE%\\JenkinsWebApplicationDemo\\bin\\Debug\\net8.0\\JenkinsWebApplicationDemo.zip" -dest:auto -setParam:"IIS Web Application Name"="TestNEW" -skip:objectName=filePath,absolutePath=".\\\\PackagDemoeTmp\\\\Web.config$" -enableRule:DoNotDelete -allowUntrusted=true
             iisreset /start'''
       }
