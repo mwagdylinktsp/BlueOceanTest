@@ -1,17 +1,15 @@
 pipeline {
   agent any
-  environment {
-    dotnet = 'C:\\Program Files\\dotnet\\dotnet.exe'
-  }
   stages {
     stage('Checkout Stage') {
       steps {
         git(url: 'git@github.com:mwagdylinktsp/VirtoTest.git', branch: 'main', credentialsId: 'Word-ssh')
       }
     }
+
     stage('Release Stage') {
       steps {
-        bat 'dotnet build %WORKSPACE%\\VirtoCommerce.Platform.sln /p:PublishProfile=" %WORKSPACE%\\TestNEW\\Properties\\PublishProfiles\\FolderProfile.pubxml" /p:Platform="Any CPU" /p:DeployOnBuild=true /m'
+        bat 'dotnet build %WORKSPACE%\\VirtoCommerce.Platform.Web.csproj /p:PublishProfile=" %WORKSPACE%\\TestNEW\\Properties\\PublishProfiles\\FolderProfile.pubxml" /p:Platform="Any CPU" /p:DeployOnBuild=true /m'
       }
     }
 
@@ -22,5 +20,9 @@ pipeline {
             iisreset /start'''
       }
     }
+
+  }
+  environment {
+    dotnet = 'C:\\Program Files\\dotnet\\dotnet.exe'
   }
 }
