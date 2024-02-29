@@ -9,7 +9,7 @@ pipeline {
 
     stage('Release Stage') {
       steps {
-        bat 'dotnet build %WORKSPACE%\\src\\VirtoCommerce.Platform.Web\\VirtoCommerce.Platform.Web.csproj /p:PublishProfile=" %WORKSPACE%\\TestNEW\\Properties\\PublishProfiles\\FolderProfile.pubxml" /p:Platform="Any CPU" /p:DeployOnBuild=true /m'
+        bat 'dotnet build %WORKSPACE%\\src\\VirtoCommerce.Platform.Web\\VirtoCommerce.Platform.Web.csproj'
       }
     }
 
