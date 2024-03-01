@@ -15,9 +15,16 @@ pipeline {
 
     stage('Deploy Stage') {
       steps {
-        bat '''iisreset /stop
-            "C:\\Program Files (x86)\\IIS\\Microsoft Web Deploy V3\\msdeploy.exe" -verb:sync -source:package="%WORKSPACE%\\JenkinsWebApplicationDemo\\bin\\Debug\\net8.0\\JenkinsWebApplicationDemo.zip" -dest:auto -setParam:"IIS Web Application Name"="TestNEW" -skip:objectName=filePath,absolutePath=".\\\\PackagDemoeTmp\\\\Web.config$" -enableRule:DoNotDelete -allowUntrusted=true
-            iisreset /start'''
+        bat 'iisreset /stop'
+        powershell 'Copy-Item -Path C:\\WagdyData\\jenkins_home\\workspace\\BlueOceanTest_main\\src\\VirtoCommerce.Platform.Web\\bin\\Debug\\net6.0\\* -Destination D:\\iis\\Virto -Recurse -Force'
+        powershell 'Remove-Item D:\\iis\\Virto\\App_Data\\modules\\* -Recurse -Force'
+        bat 'iisreset /start'
+      }
+    }
+
+    stage('Confirmation ') {
+      steps {
+        echo 'Project is Running with the New Release'
       }
     }
 
